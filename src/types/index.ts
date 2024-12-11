@@ -1,6 +1,6 @@
 interface IProduct {
   _id: string;
-  descriotion: string;
+  description: string;
   imageLink: string;
   title: string;
   category: string;
@@ -44,7 +44,7 @@ interface IOrderData {
 }
 
 // Данные с которыми будет работать в компонентах
-type TProductInfo = Pick<IProduct, 'descriotion' | 'imageLink' | 'title' | 'category'| 'price'>;
+type TProductInfo = Pick<IProduct, 'description' | 'imageLink' | 'title' | 'category'| 'price'>;
 
 type TOrderInfo = Pick<IOrder, 'payment' | 'address'>;
 
