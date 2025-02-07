@@ -23,13 +23,24 @@ export class ProductsData implements IProductsData {
     this.events = events;
   }
 
-  setProducts(products:IProduct[]) {
+  get products() {
+    return this._products;
+  }
+
+  set products(products:IProduct[]) {
     this._products = products;
+    this.addInBasketInfo();
     this.events.emit('products:changed');
   }
 
-  getProducts() {
-    return this._products;
+  addInBasketInfo() {
+    this._products.forEach(product => {
+      if(product.price == null) {
+        product.inBasket = true;
+      } else {
+        product.inBasket = false;
+      }
+    })
   }
 
   get totalNumber() {
@@ -44,10 +55,6 @@ export class ProductsData implements IProductsData {
     return this._products.find((product) => product.id === productId)
   }
 
-  get products() {
-    return this._products;
-  }
-
   set preview(productId: string | null) {
     if (!productId) {
         this._preview = null;
@@ -55,6 +62,12 @@ export class ProductsData implements IProductsData {
         this._preview = productId;
         this.events.emit('product:selected')
     }
-}
+  }
+
+  baketInfoReset() {
+    this._products.forEach(product => {
+        product.inBasket = false;
+    })
+  }
 
 }

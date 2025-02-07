@@ -43,16 +43,18 @@ yarn build
 
 ## Данные и типы данных, используемых в приложении
 
-Карточка
+
+Товар
 
 ```
 interface IProduct {
-  _id: string;
+  id: string;
   description: string;
-  imageLink: string;
+  image: string;
   title: string;
   category: string;
-  price: number;
+  price: number | null;
+  inBasket?: boolean;
 }
 ```
 
@@ -60,9 +62,7 @@ interface IProduct {
 
 ```
 interface IBasket {
-  _id: string;
-  total: number | null;
-  products: IProduct[];
+  products: IProduct[] | undefined;
 }
 ```
 
@@ -74,34 +74,33 @@ interface IOrder {
   email: string;
   phone: string;
   address: string;
-  order: IBasket;
+  total: number;
+  items: string[];
 }
-
 ```
 
-Данные, использующиеся в карточке с описанием товара
 
 ```
-type TProductInfo = Pick<IProduct, 'description' | 'imageLink' | 'title' | 'category'| 'price'>;
+export type TFormErrors = Partial<Record<keyof IOrder, string>>;
 ```
 
-Информация об оплате и доставке в форме заказа товаров
-
 ```
-type TOrderInfo = Pick<IOrder, 'payment' | 'address'>;
+export type TOrderInfo =  Partial<Record<keyof Pick<IOrder, 'payment' | 'address'>, string>>;
 ```
 
-Контактные данные покупателя в форме заказа товаров
-
 ```
-type TCustomerInfo = Pick<IOrder, 'email' | 'phone'>;
+export type TContactsInfo = Partial<Record<keyof Pick<IOrder, 'email' | 'phone'>, string>>;
 ```
 
-Данные о товарах в корзине
+```
+export type TProductCategory = 'софт-скил' | 'хард-скил' | 'другое' | 'дополнительное' | 'кнопка';
+```
 
 ```
-type TBasketInfo = Pick<IOrder, 'total' | 'items'>;
+export type TProductCategoryMap = {[Key in 'софт-скил' | 'хард-скил' | 'другое' | 'дополнительное' | 'кнопка']: string};
 ```
+
+
 
 ## Архитектура приложения
 

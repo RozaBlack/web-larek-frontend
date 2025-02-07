@@ -15,7 +15,7 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
-  entry: "./src/types/index.ts",
+  entry: "./src/index.ts",
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
