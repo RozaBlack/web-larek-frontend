@@ -1,49 +1,10 @@
-import { IProduct, TProductCategory, TProductCategoryMap } from "../types";
+import { IProduct, TProductCategory } from "../types";
 import { CDN_URL, productCategory } from "../utils/constants";
 import { cloneTemplate } from "../utils/utils";
 import { IEvents } from "./base/events";
 import { Component } from "./base/Component";
 
-/* 	
-  <template id="card-catalog">
-		<button class="gallery__item card">
-			<span class="card__category card__category_soft">софт-скил</span>
-			<h2 class="card__title">+1 час в сутках</h2>
-			<img class="card__image" src="<%=require('../images/Subtract.svg')%>" alt="" />
-			<span class="card__price">750 синапсов</span>
-		</button>
-	</template> 
-
-  
-	<template id="card-preview">
-		<div class="card card_full">
-			<img class="card__image" src="<%=require('../images/Subtract.svg')%>" alt="" />
-			<div class="card__column">
-				<span class="card__category card__category_other">другое</span>
-				<h2 class="card__title">Бэкенд-антистресс</h2>
-				<p class="card__text">Если планируете решать задачи в тренажёре, берите два.</p>
-				<div class="card__row">
-					<button class="button card__button">В корзину</button>
-					<span class="card__price">1000 синапсов</span>
-				</div>
-			</div>
-		</div>
-	</template>
-
-
-
-	<template id="card-basket">
-		<li class="basket__item card card_compact">
-			<span class="basket__item-index">1</span>
-			<span class="card__title">Фреймворк куки судьбы</span>
-			<span class="card__price">2500 синапсов</span>
-			<button class="basket__item-delete card__button" aria-label="удалить"></button>
-		</li>
-	</template>
-*/
-
 export class ProductCard extends Component<IProduct> {
-  //protected element: HTMLElement;
   protected events: IEvents;
   protected cardCategory: HTMLElement;
   protected cardTitle: HTMLElement;
@@ -144,11 +105,6 @@ export class ProductCard extends Component<IProduct> {
       }
     }
   }
-
-  //set inBasket(inBasket: boolean) {
-  //  this.inBasket = inBasket;
-  //  this.changeButtonActivity();
-  //}
 
   set itemNumber(itemNumber: number) {
     if(this.productItemNumber) {

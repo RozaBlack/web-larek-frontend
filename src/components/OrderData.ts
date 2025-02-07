@@ -13,7 +13,7 @@
 - getOrderData(): IOrder; - возвращает информацию о заказе
 - checkValidation(data: Record<keyof (TOrderInfo | TContactsInfo), string>): boolean; - проверяет данные, введенные пользователем в формы. */
 
-import { IBasket, IOrder, IOrderData, TContactsInfo, TFormErrors, TOrderInfo } from "../types";
+import { IOrder, IOrderData, TContactsInfo, TFormErrors, TOrderInfo } from "../types";
 import { constraintContacts, constraintOrder } from "../utils/constants";
 import { IEvents } from "./base/events";
 

@@ -1,8 +1,4 @@
 import '../scss/styles.scss';
-import { EventEmitter, IEvents } from "../components/base/events";
-import { ProductsData } from "../components/ProductsData";
-import { BasketData } from '../components/BasketData';
-import { OrderData } from '../components/OrderData';
 
 export type TProductCategory = 'софт-скил' | 'хард-скил' | 'другое' | 'дополнительное' | 'кнопка';
 export type TProductCategoryMap = {[Key in 'софт-скил' | 'хард-скил' | 'другое' | 'дополнительное' | 'кнопка']: string};
@@ -14,7 +10,7 @@ export interface IProduct {
   title: string;
   category: string;
   price: number | null;
-  inBasket?: boolean;
+  inBasket: boolean;
 }
 
 export interface IBasket {
@@ -35,6 +31,8 @@ export interface IProductsData {
   products: IProduct[];
   preview: string | null;
   getProduct(productId: string): IProduct;
+  addInBasketInfo(): void;
+  baketInfoReset(): void;
 }
 
 export interface IBasketData {

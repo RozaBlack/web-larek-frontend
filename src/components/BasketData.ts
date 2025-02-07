@@ -2,7 +2,6 @@ import { IBasket, IBasketData, IProduct } from "../types";
 import { IEvents } from "./base/events";
 
 export class BasketData implements IBasketData {
-  protected products: IProduct[];
   protected _basket: IBasket;
   protected events: IEvents;
   protected _total: number;

@@ -2,22 +2,9 @@ import { IEvents } from "../base/events";
 import { Component } from "../base/Component";
 
 
-/* 	
-  <div class="modal" id="modal-container">
-		<div class="modal__container">
-			<button class="modal__close" aria-label="закрыть"></button>
-			<div class="modal__content">
-
-			</div>
-		</div>
-	</div> 
-*/
-
-
 export class Modal<T> extends Component<T> {
   protected modal: HTMLElement;
   protected events: IEvents;
-  //protected infoArea: HTMLElement;
 
   constructor(container: HTMLElement, events: IEvents) {
     super(container);
@@ -26,16 +13,12 @@ export class Modal<T> extends Component<T> {
 
     const modalCloseButton = this.container.querySelector('.modal__close');
 
-    //const content = this.container.querySelector('.modal__content');
-    //console.log(content);
-
     modalCloseButton.addEventListener('click', this.closePopup.bind(this));
     this.container.addEventListener('mousedown', (evt) => this.closePopupOverlay(evt));
     this.closePopupEsc = this.closePopupEsc.bind(this);
   }
 
   set content(product: HTMLElement) {
-    //console.log(this.content);
     this.container.querySelector('.modal__content').replaceChildren(product);
   }
 
